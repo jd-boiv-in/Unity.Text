@@ -1,2 +1,4 @@
 # Unity.Text
-Small edit to TextMeshPro
+Small optimization to TextMeshPro
+
+Basically faster change on color / alpha suitable for tweening.
