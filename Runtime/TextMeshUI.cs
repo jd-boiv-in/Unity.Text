@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace jd.boivin.unity.text
+namespace JD.Text
 {
     public class TextMeshUI : TextMeshProUGUI
     {
