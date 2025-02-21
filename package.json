@@ -1,10 +1,8 @@
 {
-  "name": "jd.boivin.unity.text",
+  "name": "jd.boiv.in.text",
   "version": "1.0.0",
   "displayName": "Text",
-  "description": "",
-  "unity": "2019.3",
-  "unityRelease": "5f1",
+  "description": "Faster color set for TextMeshPro",
   "dependencies": {
     
  },
