@@ -5,6 +5,39 @@ namespace JD.Text
 {
     public class TextMeshUI : TextMeshProUGUI
     {
+        private bool _hasDefaultValues;
+        private string _defaultText;
+        private Color _defaultColor;
+        
+        public Color DefaultColor
+        {
+            get
+            {
+                if (!_hasDefaultValues) GetDefaultValues();
+                return _defaultColor;
+            }
+        }
+
+        private void GetDefaultValues()
+        {
+            if (_hasDefaultValues) return;
+            _hasDefaultValues = true;
+
+            _defaultText = text;
+            _defaultColor = color;
+        }
+
+        public void OverwriteDefaultColor(Color color)
+        {
+            if (!_hasDefaultValues)
+            {
+                _hasDefaultValues = true;
+                _defaultText = text;
+            }
+            
+            _defaultColor = color;
+        }
+        
         public void SetColor(Color32 color)
         {
             var info = textInfo;
