@@ -4,9 +4,9 @@
   "displayName": "Text",
   "description": "Faster color set for TextMeshPro",
   "dependencies": {
-    
- },
- "keywords": [
+  
+  },
+  "keywords": [
     "TextMeshPro"
   ],
   "author": {
