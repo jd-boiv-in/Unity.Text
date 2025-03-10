@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "displayName": "Text",
   "description": "Faster color set for TextMeshPro",
+  "license": "MIT",
   "dependencies": {
   
   },
