@@ -5,6 +5,11 @@ namespace JD.Text
 {
     public class TextMeshWorld : TextMeshPro
     {
+        public void SetPropertyBlock(MaterialPropertyBlock block)
+        {
+            renderer.SetPropertyBlock(block);
+        }
+        
         public void SetColor(Color colorFloat)
         {
             var color32 = (Color32) colorFloat;
