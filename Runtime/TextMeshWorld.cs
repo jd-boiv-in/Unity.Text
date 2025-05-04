@@ -5,8 +5,11 @@ namespace JD.Text
 {
     public class TextMeshWorld : TextMeshPro
     {
-        public void SetColor(Color32 color)
+        public void SetColor(Color colorFloat)
         {
+            var color32 = (Color32) colorFloat;
+            if (m_fontColor == colorFloat) return;
+            
             var info = textInfo;
             if (info == null) return;
 
@@ -17,15 +20,39 @@ namespace JD.Text
 
                 var n = Mathf.Min(c.vertexIndex + 4, colors.Length);
                 for (var j = c.vertexIndex; j < n; j++)
-                    colors[j] = color;
+                    colors[j] = color32;
             }
 
             UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
-            m_fontColor = color;
+            m_fontColor = colorFloat;
+        }
+        
+        public void SetColor(Color32 color32)
+        {
+            var colorFloat = (Color) color32;
+            if (m_fontColor == colorFloat) return;
+            
+            var info = textInfo;
+            if (info == null) return;
+
+            for (var i = 0; i < info.characterCount; i++)
+            {
+                var c = info.characterInfo[i];
+                var colors = info.meshInfo[c.materialReferenceIndex].colors32;
+
+                var n = Mathf.Min(c.vertexIndex + 4, colors.Length);
+                for (var j = c.vertexIndex; j < n; j++)
+                    colors[j] = color32;
+            }
+
+            UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+            m_fontColor = colorFloat;
         }
         
         public void SetAlpha(float value)
         {
+            if (Mathf.Approximately(m_fontColor.a, value)) return;
+            
             var info = textInfo;
             if (info == null) return;
 
@@ -38,8 +65,8 @@ namespace JD.Text
                 var n = Mathf.Min(c.vertexIndex + 4, colors.Length);
                 for (var j = c.vertexIndex; j < n; j++)
                 {
-                    var color = colors[j];
-                    colors[j] = new Color32(color.r, color.g, color.b, a);
+                    var color32 = colors[j];
+                    colors[j] = new Color32(color32.r, color32.g, color32.b, a);
                 }
             }
             
